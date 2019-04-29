@@ -1,0 +1,7 @@
+alias gs="git status"
+alias gl="git log -3"
+alias dev='cd ~/dev'
+alias ~='cd ~'
+alias ll='ls -lAh --color=auto'
+
+export PS1="\[\e[36m\]\h\[\e[m\] \[\e[33m\]\w\[\e[m\]\n\[\e[33m\]\\$\[\e[m\] "

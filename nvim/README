@@ -1,0 +1,2 @@
+1. Run install.sh to download plugin manager and link plugin list
+2. Open nvim and run :PlugInstall
