@@ -24,6 +24,9 @@ inoremap jj <Esc>
 " autoindent
 filetype plugin indent on
 
+" to scroll with mousewheel and click
+set mouse=a
+
 " tabs should be spaces
 set tabstop=4
 set shiftwidth=4
