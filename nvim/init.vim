@@ -5,14 +5,19 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'vim-airline/vim-airline'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
+Plug 'ervandew/supertab'
 " Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'w0rp/ale'
 Plug 'morhetz/gruvbox'
 
 call plug#end()
 
-let mapleader = ","
-nmap <leader>n :NERDTreeToggle<cr>
+let mapleader = " "
+
+" NERDTREE
+nmap <leader>o :NERDTreeToggle<cr>
+" close nerdtree if it's the last open buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " commenting
 imap <C-_> <Esc>gc$
@@ -51,3 +56,10 @@ let b:ale_linters = ['flake8', 'pyls']
 let g:ale_completion_enabled = 1
 
 let g:gruvbox_underline = 0
+
+" leader+number to switch between splits
+let i = 1
+while i <= 9
+    execute 'nnoremap <Leader>' . i . ' :' . i . 'wincmd w<CR>'
+        let i = i + 1
+endwhile
