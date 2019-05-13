@@ -5,6 +5,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'vim-airline/vim-airline'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
+Plug 'jeetsukumaran/vim-buffergator'
 Plug 'ervandew/supertab'
 " Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'w0rp/ale'
@@ -18,13 +19,24 @@ let mapleader = " "
 nmap <leader>o :NERDTreeToggle<cr>
 " close nerdtree if it's the last open buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" close nerdtree on file open
+let NERDTreeQuitOnOpen=1
+
+" buffergator
+nmap <leader>b :BuffergatorToggle<cr>
+
+" go back to last opened buffer
+nmap <leader>p :b#<cr>
 
 " commenting
 imap <C-_> <Esc>gc$
 nmap <C-_> gc$
 vmap <C-_> gc
 
+" jj to exit insert mode
 inoremap jj <Esc>
+
+" moving through buffers
 
 " autoindent
 filetype plugin indent on
