@@ -45,6 +45,11 @@ dcfr ()
     docker-compose up -d --force-recreate $@
 }
 
+dcps ()
+{
+    docker-compose ps
+}
+
 dhost()
 {
     env | grep DOCKER
@@ -57,4 +62,19 @@ gl()
     else
         git log --decorate $@
     fi
+}
+
+dent ()
+{
+    docker exec -it $1 /bin/bash
+}
+
+dbash ()
+{
+    docker run -it $1 /bin/bash
+}
+
+dps ()
+{
+    docker ps
 }
