@@ -7,9 +7,9 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'ervandew/supertab'
-" Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'w0rp/ale'
 Plug 'morhetz/gruvbox'
+Plug 'tomasiser/vim-code-dark'
 
 call plug#end()
 
@@ -57,12 +57,13 @@ vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
 " color
-set background=dark
-color gruvbox
+" set background=dark
+" color gruvbox
+colorscheme codedark
 hi Normal ctermbg=None
 
 " line numbers
-set number
+" set number
 
 let b:ale_linters = ['flake8', 'pyls']
 let g:ale_completion_enabled = 1
