@@ -82,3 +82,10 @@ dps ()
 {
     docker ps
 }
+
+nenv ()
+{
+    container=$(docker create -it --entrypoint=/bin/bash --workdir /repo -v ~/dev:/repo $1)
+    docker cp -L ~/.bashrc $container:/root/.bashrc
+    docker start -ia $container
+}
