@@ -89,3 +89,11 @@ nenv ()
     docker cp -L ~/.bashrc $container:/root/.bashrc
     docker start -ia $container
 }
+
+# sent (smart enter) is like dent except rather than entering by container name, it will
+# enter based on the container service name label
+sent ()
+{
+    img_hash=$(docker ps --filter "label=com.docker.compose.service=$1" -q)
+    docker exec -it ${img_hash} /bin/bash
+}
