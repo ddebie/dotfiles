@@ -44,6 +44,11 @@ dcl ()
     docker-compose logs $@
 }
 
+dclt ()
+{
+    docker-compose --tail=2000 -f $@
+}
+
 dcfr ()
 {
     docker-compose up -d --force-recreate $@
