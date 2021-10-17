@@ -1,3 +1,10 @@
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
+
+# in ls make directories yellow underlined. blue hard to read at times
+LS_COLORS=$LS_COLORS:'di=1;4;33:' ; export LS_COLORS
+
 # .bashrc
 function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
@@ -15,18 +22,18 @@ function proml {
   local     LIGHT_RED="\[\033[1;31m\]"
   local         GREEN="\[\033[0;32m\]"
   local        YELLOW="\[\033[0;33m\]"
+  local BRIGHT_YELLOW="\[\033[1;33m\]"
   local   LIGHT_GREEN="\[\033[1;32m\]"
   local         WHITE="\[\033[1;37m\]"
   local    LIGHT_GRAY="\[\033[0;37m\]"
   local        PURPLE="\[\033[0;35m\]"
   local          CYAN="\[\033[0;36m\]"
-  local BRIGHT_YELLOW="\e[38;5;82m"
 # END OPTIONAL
  
   local     DEFAULT="\[\033[0m\]"
  
-# PS1="\[\033[35m\]\t\[\033[m\]-\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h$WHITE:$YELLOW\w$BLUE\$(parse_git_branch)$DEFAULT\$ "
-PS1="\[\033[35m\]\t\[\033[m\]-\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h$WHITE:$YELLOW\w$BLUE\$(parse_git_branch) $WHITE\$(get_docker_host)$DEFAULT\$ "
+#PS1="\[\033[35m\]\t\[\033[m\]-\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h$WHITE:$YELLOW\w$BRIGHT_YELLOW\$(parse_git_branch) $WHITE\$(get_docker_host)$DEFAULT\$ "
+PS1="$PURPLE\t$WHITE$CYAN\u@\h$YELLOW\w$BRIGHT_YELLOW\$(parse_git_branch) $WHITE\$(get_docker_host)$DEFAULT\$ "
 }
  
 proml
@@ -34,8 +41,6 @@ proml
 alias gs='git status'
 alias dev='cd ~/dev'
 alias vim="nvim"
-alias python='/usr/bin/python'
-
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
@@ -46,7 +51,7 @@ dcl ()
 
 dclt ()
 {
-    docker-compose --tail=2000 -f $@
+    docker-compose logs --tail=2000 -f $@
 }
 
 dcfr ()
@@ -102,3 +107,9 @@ sent ()
     img_hash=$(docker ps --filter "label=com.docker.compose.service=$1" -q)
     docker exec -it ${img_hash} /bin/bash
 }
+
+ll()
+{
+    ls -lh
+}
+
