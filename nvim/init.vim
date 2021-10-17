@@ -28,6 +28,9 @@ nmap <leader>b :BuffergatorToggle<cr>
 " go back to last opened buffer
 nmap <leader>p :b#<cr>
 
+" Disable guicursor it was making it write random characters within tmux
+set guicursor=
+
 " commenting
 imap <C-_> <Esc>gc$
 nmap <C-_> gc$
