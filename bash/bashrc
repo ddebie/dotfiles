@@ -78,6 +78,11 @@ gl()
     fi
 }
 
+gc()
+{
+    git checkout $@
+}
+
 dent ()
 {
     docker exec -it $1 /bin/bash
@@ -110,6 +115,6 @@ sent ()
 
 ll()
 {
-    ls -lh
+    ls -lh $@
 }
 
