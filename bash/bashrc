@@ -113,6 +113,7 @@ sent ()
     docker exec -it ${img_hash} /bin/bash
 }
 
+unalias ll 2>/dev/null
 ll()
 {
     ls -lh $@
