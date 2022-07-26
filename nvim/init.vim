@@ -100,7 +100,7 @@ let g:sneak#label = 1
 
 " background colors for active vs inactive windows
 hi ActiveWindow ctermbg=None
-hi InactiveWindow ctermbg=black
+hi InactiveWindow ctermbg=236
 set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
 
 " make vim splits maintain equal sizing even when minimize and maximized
