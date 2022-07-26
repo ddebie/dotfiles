@@ -43,6 +43,7 @@ alias dev='cd ~/dev'
 alias vim="nvim"
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+alias kc='kubectl'
 
 dcl ()
 {
@@ -51,12 +52,17 @@ dcl ()
 
 dclt ()
 {
-    docker-compose logs --tail=2000 -f $@
+    docker-compose logs --tail=200 -f $@
 }
 
 dcfr ()
 {
     docker-compose up -d --force-recreate $@
+}
+
+dcup ()
+{
+    docker-compose up -d $@
 }
 
 dcps ()
@@ -101,7 +107,7 @@ dps ()
 nenv ()
 {
     container=$(docker create -it --entrypoint=/bin/bash --workdir /repo -v ~/dev:/repo $1)
-    docker cp -L ~/.bashrc $container:/root/.bashrc
+    #docker cp -L ~/.bashrc $container:/root/.bashrc
     docker start -ia $container
 }
 

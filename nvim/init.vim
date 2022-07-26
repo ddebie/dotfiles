@@ -7,20 +7,38 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'ervandew/supertab'
-Plug 'w0rp/ale'
-Plug 'morhetz/gruvbox'
-Plug 'tomasiser/vim-code-dark'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'justinmk/vim-sneak'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'djoshea/vim-autoread'
+Plug 'voldikss/vim-floaterm'
 
 call plug#end()
 
 let mapleader = " "
 
 " NERDTREE
-nmap <leader>o :NERDTreeToggle<cr>
+nmap <leader>e :NERDTreeToggle<cr>
 " close nerdtree if it's the last open buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" close nerdtree on file open
-let NERDTreeQuitOnOpen=1
+
+" relative line numbers
+set number
+set relativenumber
+
+" toggle line numbers
+nmap <leader>l :set relativenumber! nu!<cr>
+
+" highlight the line that your cursor is on
+set cursorline
+
+" start scrolling down in last 10 lines so we always have some context
+set scrolloff=10
+
+" fzf
+nmap <C-P> :GFiles<CR>
+nmap <C-F> :Rg<CR>
 
 " buffergator
 nmap <leader>b :BuffergatorToggle<cr>
@@ -36,8 +54,8 @@ imap <C-_> <Esc>gc$
 nmap <C-_> gc$
 vmap <C-_> gc
 
-" jj to exit insert mode
-inoremap jj <Esc>
+" jk to exit insert mode
+inoremap jk <Esc>
 
 " moving through buffers
 
@@ -52,26 +70,23 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+" be able to move between splits with ctrl+vim keys
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 " tab forwrad and backwards
-nnoremap <Tab> >>_
-nnoremap <S-Tab> <<_
+" nnoremap <Tab> >>_
+" nnoremap <S-Tab> <<_    " Tab is the same as Ctrl+I which breaks jmp forward
 inoremap <S-Tab> <C-D>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
 " color
-" set background=dark
-" color gruvbox
-colorscheme codedark
-hi Normal ctermbg=None
-
-" line numbers
-" set number
-
-let b:ale_linters = ['flake8', 'pyls']
-let g:ale_completion_enabled = 1
-
-let g:gruvbox_underline = 0
+let g:dracula_colorterm = 0
+colorscheme dracula
+" hi Normal ctermbg=None
 
 " leader+number to switch between splits
 let i = 1
@@ -79,3 +94,22 @@ while i <= 9
     execute 'nnoremap <Leader>' . i . ' :' . i . 'wincmd w<CR>'
         let i = i + 1
 endwhile
+
+" vim sneak
+let g:sneak#label = 1
+
+" background colors for active vs inactive windows
+hi ActiveWindow ctermbg=None
+hi InactiveWindow ctermbg=black
+set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
+
+" make vim splits maintain equal sizing even when minimize and maximized
+autocmd VimResized * wincmd =
+
+" floaterm
+nnoremap <C-T> :FloatermShow<cr>
+tnoremap <C-T> <C-\><C-N>:FloatermHide<cr>
+nnoremap <leader>tn :FloatermNew --height=1.0 --width=0.7 --autoclose=2<cr>
+tnoremap <leader>tn <C-\><C-N>:FloatermNew --height=1.0 --width=0.7 --autoclose=2<cr>
+tnoremap <leader>th <C-\><C-N>:FloatermPrev<cr>
+tnoremap <leader>tl <C-\><C-N>:FloatermNext<cr>
