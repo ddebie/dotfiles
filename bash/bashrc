@@ -1,6 +1,8 @@
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv virtualenv-init -)"
+if [ -d "$HOME/.pyenv" ]; then
+  export PATH="$HOME/.pyenv/bin:$PATH"
+  eval "$(pyenv init --path)"
+  eval "$(pyenv virtualenv-init -)"
+fi
 
 # in ls make directories yellow underlined. blue hard to read at times
 LS_COLORS=$LS_COLORS:'di=1;4;33:' ; export LS_COLORS
