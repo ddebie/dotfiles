@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 source ../common.sh
 
 mkdir -p $HOME/.local/share/nvim/site/autoload
