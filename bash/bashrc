@@ -35,7 +35,7 @@ function proml {
   local     DEFAULT="\[\033[0m\]"
  
 #PS1="\[\033[35m\]\t\[\033[m\]-\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h$WHITE:$YELLOW\w$BRIGHT_YELLOW\$(parse_git_branch) $WHITE\$(get_docker_host)$DEFAULT\$ "
-PS1="$PURPLE\t$WHITE$CYAN\u@\h$YELLOW\w$BRIGHT_YELLOW\$(parse_git_branch) $WHITE\$(get_docker_host)$DEFAULT\$ "
+PS1="$PURPLE\t$WHITE$CYAN@\h$YELLOW\w$BRIGHT_YELLOW\$(parse_git_branch) $WHITE\$(get_docker_host)$DEFAULT\$ "
 }
  
 proml
@@ -45,7 +45,11 @@ alias dev='cd ~/dev'
 alias vim="nvim"
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias kc='kubectl'
+alias k='kubectl'
+complete -o default -F __start_kubectl k
+
+# to use _ rather than - as delimiter
+export COMPOSE_COMPATIBILITY=true
 
 dcl ()
 {
@@ -127,3 +131,18 @@ ll()
     ls -lh $@
 }
 
+kset ()
+{
+    if [ $1 = "paper" ]; then
+        kubie ctx gm-prod-infra -n paper
+    elif [ $1 = "prod" ]; then
+        kubie ctx gm-prod-infra -n prod
+    elif [ $1 = "jobs" ]; then
+        kubie ctx user@sy4-prod -n gm-jobs
+    elif [ $1 = "juno3" ]; then
+        kubie ctx juno3 -n juno
+    fi
+}
+
+source ~/other/fzf-tab-completion/bash/fzf-bash-completion.sh
+bind -x '"\t": fzf_bash_completion'

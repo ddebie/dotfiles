@@ -75,6 +75,10 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+inoremap <C-J> <Esc><C-W><C-J>
+inoremap <C-K> <Esc><C-W><C-K>
+inoremap <C-L> <Esc><C-W><C-L>
+inoremap <C-H> <Esc><C-W><C-H>
 
 " tab forwrad and backwards
 " nnoremap <Tab> >>_
@@ -108,8 +112,7 @@ autocmd VimResized * wincmd =
 
 " floaterm
 nnoremap <C-T> :FloatermShow<cr>
+inoremap <C-T> <Esc>:FloatermShow<cr>
 tnoremap <C-T> <C-\><C-N>:FloatermHide<cr>
-nnoremap <leader>tn :FloatermNew --height=1.0 --width=0.7 --autoclose=2<cr>
-tnoremap <leader>tn <C-\><C-N>:FloatermNew --height=1.0 --width=0.7 --autoclose=2<cr>
-tnoremap <leader>th <C-\><C-N>:FloatermPrev<cr>
-tnoremap <leader>tl <C-\><C-N>:FloatermNext<cr>
+nnoremap <leader>n :FloatermNew --height=1.0 --width=0.7 --autoclose=2<cr>
+tnoremap <C-N> <C-\><C-N>:FloatermNext<cr>
