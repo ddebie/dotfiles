@@ -1,0 +1,70 @@
+LS_COLORS=$LS_COLORS:'di=1;4;33:'
+export LS_COLORS
+
+alias gs='git status'
+alias dev='cd ~/dev'
+alias vim="nvim"
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias k='kubectl'
+
+dcl() {
+	docker-compose logs $@
+}
+
+dclt() {
+	docker-compose logs --tail=200 -f $@
+}
+
+dcfr() {
+	docker-compose up -d --force-recreate $@
+}
+
+dcup() {
+	docker-compose up -d $@
+}
+
+dcps() {
+	docker-compose ps
+}
+
+gl() {
+	if [ $# -eq 0 ]; then
+		git log --decorate -3
+	else
+		git log --decorate $@
+	fi
+}
+
+gc() {
+	git checkout $@
+}
+
+dent() {
+	docker exec -it $1 /bin/bash
+}
+
+dbash() {
+	docker run -it $1 /bin/bash
+}
+
+dps() {
+	docker ps
+}
+
+nenv() {
+	container=$(docker create -it --entrypoint=/bin/bash --workdir /repo -v ~/dev:/repo $1)
+	docker start -ia $container
+}
+
+# sent (smart enter) is like dent except rather than entering by container name, it will
+# enter based on the container service name label
+sent() {
+	img_hash=$(docker ps --filter "label=com.docker.compose.service=$1" -q)
+	docker exec -it ${img_hash} /bin/bash
+}
+
+# unalias ll 2>/dev/null
+ll() {
+	ls -lh $@
+}
