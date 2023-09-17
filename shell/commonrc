@@ -2,6 +2,7 @@ LS_COLORS=$LS_COLORS:'di=1;4;33:'
 export LS_COLORS
 
 alias gs='git status'
+alias gd='git diff'
 alias dev='cd ~/dev'
 alias vim="nvim"
 alias ls='ls --color=auto'
