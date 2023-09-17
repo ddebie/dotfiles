@@ -7,6 +7,9 @@
 # Inserts a blank line between shell prompts
 add_newline = false
 
+[line_break]
+disabled = true
+
 # Bracket presets
 [aws]
 format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
