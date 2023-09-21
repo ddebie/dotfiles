@@ -14,3 +14,8 @@ function toggle_linenumbers()
     vim.opt.relativenumber = not vim.opt.relativenumber:get()
 end
 vim.keymap.set("n", "<leader>l", toggle_linenumbers)
+
+-- Tab or Shift+Tab to change indent
+vim.keymap.set("v", "<Tab>", ">gv")
+vim.keymap.set("v", "<S-Tab>", "<gv")
+
