@@ -8,7 +8,6 @@ return {
         overrides = {
             Normal = { bg = "None" },
             NormalNC = { bg = "#303030" },
-            -- CursorLine = { bg = "White" },
             CursorLine = { bg = "#262626" },
         }
     },
