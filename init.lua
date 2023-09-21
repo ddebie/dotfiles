@@ -1,6 +1,7 @@
 -- First run files in "core", do things like vim opts for example
 require("core")
 require("core.keymaps")
+require("core.autocmd")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
