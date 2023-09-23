@@ -31,6 +31,7 @@ return {
         end,
         keys = {
             { "<C-p>", "<cmd> Telescope find_files <CR>", desc = "Find files" },
+            { "<leader>p", "<cmd> Telescope resume <CR>", desc = "Telescope resume" },
             { "<C-f>", "<cmd> Telescope live_grep <CR>", desc = "Live grep" },
         },
     },
