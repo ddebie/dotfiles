@@ -1,11 +1,13 @@
+map = vim.keymap
+
 -- jk to exit insert mode
-vim.keymap.set("i", "jk", "<Esc>")
+map.set("i", "jk", "<Esc>")
 
 -- Ctrl + hjkl to move around splits
-vim.keymap.set("n", "<C-h>", "<C-w>h")
-vim.keymap.set("n", "<C-j>", "<C-w>j")
-vim.keymap.set("n", "<C-k>", "<C-w>k")
-vim.keymap.set("n", "<C-l>", "<C-w>l")
+map.set("n", "<C-h>", "<C-w>h")
+map.set("n", "<C-j>", "<C-w>j")
+map.set("n", "<C-k>", "<C-w>k")
+map.set("n", "<C-l>", "<C-w>l")
 
 -- <leader> + l to toggle line numbers
 function toggle_linenumbers()
@@ -13,9 +15,8 @@ function toggle_linenumbers()
     vim.opt.number = not vim.opt.number:get()
     vim.opt.relativenumber = not vim.opt.relativenumber:get()
 end
-vim.keymap.set("n", "<leader>l", toggle_linenumbers)
+map.set("n", "<leader>l", toggle_linenumbers)
 
 -- Tab or Shift+Tab to change indent
-vim.keymap.set("v", "<Tab>", ">gv")
-vim.keymap.set("v", "<S-Tab>", "<gv")
-
+map.set("v", "<Tab>", ">gv")
+map.set("v", "<S-Tab>", "<gv")
