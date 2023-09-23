@@ -3,6 +3,17 @@ return {
         'nvim-telescope/telescope.nvim',
         dependencies = { 'nvim-lua/plenary.nvim', { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }},
         opts = {
+            defaults = {
+                mappings = {
+                    i = { 
+                        ["<C-j>"] = "move_selection_next",
+                        ["<C-k>"] = "move_selection_previous",
+                    },
+                    n = { 
+                        ["<C-c>"] = "close", 
+                    },
+                },
+            },
             extensions = {
                fzf = {
                  fuzzy = true,                    -- false will only do exact matching
