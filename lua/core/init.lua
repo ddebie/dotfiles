@@ -19,3 +19,8 @@ vim.opt.scrolloff = 10
 -- Ignore case unless searching with capitals
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+-- nvim-tree 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.termguicolors = true
