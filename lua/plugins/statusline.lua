@@ -1,11 +1,11 @@
 return {
-  "nvim-lualine/lualine.nvim",
-  event = "VeryLazy",
-  opts = function()
-      return {
-          options = {
-              theme = "auto"
-          }
-      }
-  end
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    opts = function()
+        return {
+            options = {
+                theme = "auto",
+            },
+        }
+    end,
 }

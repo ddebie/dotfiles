@@ -1,9 +1,8 @@
 return {
     -- Smart comments
     {
-        'numToStr/Comment.nvim',
-        opts = {
-        },
+        "numToStr/Comment.nvim",
+        opts = {},
         lazy = false,
     },
     -- Leap
@@ -11,7 +10,7 @@ return {
         "ggandor/leap.nvim",
         lazy = false,
         config = function()
-            require('leap').add_default_mappings()
+            require("leap").add_default_mappings()
         end,
-    }
+    },
 }
