@@ -16,8 +16,8 @@ vim.opt.cursorline = true
 -- Start scrolling down in last 10 lines to always have context
 vim.opt.scrolloff = 10
 
--- Don't wrap long lines
-vim.opt.wrap = false
+-- Wrap long lines
+vim.opt.wrap = true
 
 -- Ignore case unless searching with capitals
 vim.opt.ignorecase = true
