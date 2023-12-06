@@ -1,7 +1,8 @@
 map = vim.keymap
 
--- jk to exit insert mode
+-- jk/kj to exit insert mode
 map.set("i", "jk", "<Esc>")
+map.set("i", "kj", "<Esc>")
 
 -- Ctrl + hjkl to move around splits
 map.set("n", "<C-h>", "<C-w>h")
