@@ -16,6 +16,7 @@ config.enable_tab_bar = false
 
 -- For example, changing the color scheme:
 -- config.color_scheme = 'AdventureTime'
+config.color_scheme = 'Dracula'
 
 -- and finally, return the configuration to wezterm
 return config
