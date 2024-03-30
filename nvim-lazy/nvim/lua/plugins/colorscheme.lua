@@ -5,6 +5,7 @@ return {
         priority = 1000, -- make sure to load this before all the other start plugins
         opts = function(_, opts)
             local colors = require("dracula").colors()
+            colors.comment = "#778bc7"
             local active_bg = "#1c1c1c" -- color234
             local inactive_bg = "#303030" -- color236
             local selection_bg = "#262626"
