@@ -9,8 +9,14 @@ return {
     {
         "ggandor/leap.nvim",
         lazy = false,
-        config = function()
-            require("leap").add_default_mappings()
-        end,
+        keys = {
+            { "s", "<Plug>(leap)", mode = {"n", "x", "o"}, desc="Leap"},
+            { "S", "<Plug>(leap-from-window)", mode = {"n", "x", "o"}, desc="Leap from window"}
+        }
+    },
+    {
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        opts = {}, -- this is equalent to setup({}) function
     },
 }
