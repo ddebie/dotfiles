@@ -22,6 +22,9 @@ return {
                     TelescopeResultsBorder = { fg = colors.fg, bg = active_bg },
                     TelescopePreviewBorder = { fg = colors.fg, bg = active_bg },
                     TelescopeSelection = { fg = colors.fg, bg = selection_bg },
+
+                    -- Make the Flash label easier to see
+                    FlashLabel = { fg = "Yellow", bg = "Black" },
                 },
             }
         end,
