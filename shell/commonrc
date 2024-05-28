@@ -29,6 +29,18 @@ dcps() {
 	docker-compose ps
 }
 
+dset()
+{
+    unset DOCKER_HOST;
+    export DOCKER_HOST="$1:2375";
+}
+
+dunset()
+{
+    unset DOCKER_HOST;
+    export DOCKER_HOST="localhost:2375";
+}
+
 gl() {
 	if [ $# -eq 0 ]; then
 		git log --decorate -3
@@ -65,7 +77,7 @@ sent() {
 	docker exec -it ${img_hash} /bin/bash
 }
 
-# unalias ll 2>/dev/null
+unalias ll 2>/dev/null
 ll() {
 	ls -lh $@
 }

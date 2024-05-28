@@ -44,8 +44,13 @@ format = '\[[$symbol($version)]($style)\]'
 [deno]
 format = '\[[$symbol($version)]($style)\]'
 
+[directory]
+format = '[$path]($style)[$read_only]($read_only_style) '
+style = 'yellow'
+
 [docker_context]
 format = '\[[$symbol$context]($style)\]'
+only_with_files = false
 
 [dotnet]
 format = '\[[$symbol($version)(🎯 $tfm)]($style)\]'
@@ -94,6 +99,10 @@ format = '\[[$symbol($version)]($style)\]'
 
 [hg_branch]
 format = '\[[$symbol$branch]($style)\]'
+
+[hostname]
+format = '[@$hostname]($style) '
+style = 'bold blue'
 
 [java]
 format = '\[[$symbol($version)]($style)\]'
@@ -191,7 +200,10 @@ format = '\[[$symbol$workspace]($style)\]'
 format = '\[[$time]($style)\]'
 
 [username]
-format = '\[[$user]($style)\]'
+format = '[$user]($style)'
+show_always = false
+# Hide username when in a remote TMUX session
+detect_env_vars = ['!TMUX', 'SSH_CONNECTION']
 
 [vagrant]
 format = '\[[$symbol($version)]($style)\]'
