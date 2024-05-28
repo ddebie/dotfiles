@@ -131,18 +131,5 @@ ll()
     ls -lh $@
 }
 
-kset ()
-{
-    if [ $1 = "paper" ]; then
-        kubie ctx gm-prod-infra -n paper
-    elif [ $1 = "prod" ]; then
-        kubie ctx gm-prod-infra -n prod
-    elif [ $1 = "jobs" ]; then
-        kubie ctx user@sy4-prod -n gm-jobs
-    elif [ $1 = "juno3" ]; then
-        kubie ctx juno3 -n juno
-    fi
-}
-
 source ~/other/fzf-tab-completion/bash/fzf-bash-completion.sh
 bind -x '"\t": fzf_bash_completion'
