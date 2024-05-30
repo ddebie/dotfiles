@@ -7,11 +7,13 @@ return {
         "hrsh7th/cmp-path",
         "saadparwaiz1/cmp_luasnip",
         "L3MON4D3/LuaSnip",
+        "rafamadriz/friendly-snippets",
     },
     opts = function()
         -- Here is where you configure the autocompletion settings.
         local lsp_zero = require("lsp-zero")
         lsp_zero.extend_cmp()
+        require("luasnip.loaders.from_vscode").lazy_load()
 
         vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
         local cmp = require("cmp")
