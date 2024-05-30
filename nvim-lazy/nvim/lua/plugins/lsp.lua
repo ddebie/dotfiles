@@ -16,6 +16,16 @@ return {
         config = true,
     },
 
+    -- So you can see the LSP function signature as you're typing the functions
+    {
+        "ray-x/lsp_signature.nvim",
+        event = "VeryLazy",
+        opts = {},
+        config = function(_, opts)
+            require("lsp_signature").setup(opts)
+        end,
+    },
+
     -- LSP
     {
         "neovim/nvim-lspconfig",
@@ -24,6 +34,7 @@ return {
         dependencies = {
             { "hrsh7th/cmp-nvim-lsp" },
             { "williamboman/mason-lspconfig.nvim" },
+            { "ray-x/lsp_signature.nvim" },
         },
         config = function()
             -- This is where all the LSP shenanigans will live
