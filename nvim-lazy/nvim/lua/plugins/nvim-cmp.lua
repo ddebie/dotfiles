@@ -6,10 +6,16 @@ return {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
         "saadparwaiz1/cmp_luasnip",
+        "L3MON4D3/LuaSnip",
     },
     opts = function()
+        -- Here is where you configure the autocompletion settings.
+        local lsp_zero = require("lsp-zero")
+        lsp_zero.extend_cmp()
+
         vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
         local cmp = require("cmp")
+        local cmp_action = lsp_zero.cmp_action()
         local defaults = require("cmp.config.default")()
         return {
             completion = {
@@ -21,12 +27,12 @@ return {
                 end,
             },
             mapping = cmp.mapping.preset.insert({
-                ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-                ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
                 ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
                 ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-                ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-                ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+                ["<C-d>"] = cmp.mapping.scroll_docs(4),
+                ["<C-f>"] = cmp_action.luasnip_jump_forward(),
+                ["<C-b>"] = cmp_action.luasnip_jump_backward(),
                 ["<C-Space>"] = cmp.mapping.complete(),
                 ["<C-e>"] = cmp.mapping.abort(),
                 ["<Tab>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
@@ -57,11 +63,12 @@ return {
                     },
                 },
             }),
-            experimental = {
-                ghost_text = {
-                    hl_group = "CmpGhostText",
-                },
-            },
+            -- Disable ghost text, uncomment to re-enable
+            -- experimental = {
+            --     ghost_text = {
+            --         hl_group = "CmpGhostText",
+            --     },
+            -- },
             sorting = defaults.sorting,
         }
     end,
