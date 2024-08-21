@@ -1,0 +1,16 @@
+behavior {
+    theme "Dark"
+    quickSelect {
+        activateOnAnyCharacter false
+    }
+}
+
+keyBindings {
+    "Cmd+F" "core.favorites"
+    "Cmd+R" "core.recent"
+    
+    "H" "core.move.left"
+    "L" "core.move.right"
+    "K" "core.move.up"
+    "J" "core.move.down"
+}
