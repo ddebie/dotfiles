@@ -1,8 +1,7 @@
 Home "~"
 Downloads "${user.downloads}"
+Drive "~/My Drive/"
 Documents "${user.documents}"
-Desktop "${user.desktop}"
-Library "${user.library}"
 Applications "${all.applications}"
 
 Separator1 null
