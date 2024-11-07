@@ -13,6 +13,9 @@ end
 config.enable_tab_bar = false
 
 -- This is where you actually apply your config choices
+config.font_size = 13
+config.font =
+  wezterm.font('Monaspace Neon', { weight = 'Regular', italic = false })
 
 -- For example, changing the color scheme:
 -- config.color_scheme = 'AdventureTime'
