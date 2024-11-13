@@ -21,5 +21,8 @@ config.font =
 -- config.color_scheme = 'AdventureTime'
 config.color_scheme = 'Dracula'
 
+-- Disable the bell
+config.audible_bell = "Disabled"
+
 -- and finally, return the configuration to wezterm
 return config
