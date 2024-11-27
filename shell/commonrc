@@ -32,7 +32,11 @@ dcps() {
 dset()
 {
     unset DOCKER_HOST;
-    export DOCKER_HOST="$1:2375";
+    if [ "$1" = "hel1c1" ]; then
+        export DOCKER_HOST="ssh://$1"
+    else
+        export DOCKER_HOST="$1:2375"
+    fi
 }
 
 dunset()
